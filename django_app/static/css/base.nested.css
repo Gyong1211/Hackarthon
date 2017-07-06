@@ -1,53 +1,43 @@
-@import "variables";
-
 html, body {
   font-family: monospace;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 18px; }
 
-}
 a {
-  text-decoration:none;
-}
+  text-decoration: none; }
+
 img {
-  width: 100%;
-}
+  width: 100%; }
 
 .header {
-  float:right;
-  margin: 8px;
-  .header_sub {
+  float: right;
+  margin: 8px; }
+  .header .header_sub {
     text-decoration: none;
-    margin: 0 auto;
-  }
-}
+    margin: 0 auto; }
+
 .absolute {
   position: absolute;
   width: 100%;
   top: 50%;
   left: 50%;
-  transform:translate(-50%,-50%);
-
-  .login-form{
+  transform: translate(-50%, -50%); }
+  .absolute .login-form {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform:translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     color: white;
-    font-size: 50px;
-
-    .title {
+    font-size: 50px; }
+    .absolute .login-form .title {
       margin: 20px;
       text-decoration: none;
       color: white;
-      font-family: serif;
-    }
+      font-family: serif; }
 
-  }
-}
 .login-signup {
-  margin: 10px;
-}
+  margin: 10px; }
+
 .enter {
   opacity: 0.5;
   color: white;
@@ -55,9 +45,8 @@ img {
   font-size: 20px;
   margin: 20px;
   padding: 3px;
-  box-sizing: border-box;
+  box-sizing: border-box; }
 
-}
 .btn1 {
   border: none;
   background-color: #FFFF6C;
@@ -66,8 +55,7 @@ img {
   cursor: pointer;
   font-size: 20px;
   padding: 10px 18px;
-  font-family: monospace;
-}
+  font-family: monospace; }
 
 .btn2 {
   border: none;
@@ -77,5 +65,4 @@ img {
   cursor: pointer;
   font-size: 20px;
   padding: 10px 18px;
-  font-family: monospace;
-}
+  font-family: monospace; }

@@ -1,19 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <title>Title</title>
 </head>
 <body>
-    <div>
-        <h1>출석 체크</h1>
-        {% if user.is_authenticated %}
-        <span>{{ user }} is online</span>
-        <a href="{% url 'member:logout' %}" type="button">LOG OUT</a>
-        {% else %}
-        <a href="{% url 'member:login' %}" type="button">LOGIN</a>
-        {% endif %}
-        <a href="{% url 'member:signup' %}" type="button">SIGN UP</a>
+    {% if user.is_authenticated %}
+    <div class="header">
+        <span class="header_sub">{{ user }} is online</span>
+        <a class="header_sub btn1" href="{% url 'member:logout' %}" type="button">LOG OUT</a>
     </div>
+    {% else %}
+    <div class="absolute">
+        <div class="login-form">
+            <!--반장님 링크 넣으세요-->
+            <a href=""><h4 class="title">출석 체크</h4></a>
+            <form class="header_sub" action="{% url 'member:login' %}" method="POST">
+                {% csrf_token %}
+                <div class="enter">{{ login_form.username }}</div>
+                <div class="enter">{{ login_form.password }}</div>
+                <div class="login-signup">
+                    <button type="submit" class="btn1">LOGIN</button>
+                    <a class="btn2" href="{% url 'member:signup' %}">SIGN UP</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    {% endif %}
+
+
+
+    <img src="{% static 'images/background.jpg' %}" alt="">
 </body>
 </html>

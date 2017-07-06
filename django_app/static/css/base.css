@@ -1,53 +1,55 @@
-@import "variables";
-
 html, body {
   font-family: monospace;
   font-size: 14px;
   line-height: 18px;
+}
 
-}
 a {
-  text-decoration:none;
+  text-decoration: none;
 }
+
 img {
   width: 100%;
 }
 
 .header {
-  float:right;
+  float: right;
   margin: 8px;
-  .header_sub {
-    text-decoration: none;
-    margin: 0 auto;
-  }
 }
+
+.header .header_sub {
+  text-decoration: none;
+  margin: 0 auto;
+}
+
 .absolute {
   position: absolute;
   width: 100%;
   top: 50%;
   left: 50%;
-  transform:translate(-50%,-50%);
-
-  .login-form{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:translate(-50%,-50%);
-    color: white;
-    font-size: 50px;
-
-    .title {
-      margin: 20px;
-      text-decoration: none;
-      color: white;
-      font-family: serif;
-    }
-
-  }
+  transform: translate(-50%, -50%);
 }
+
+.absolute .login-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 50px;
+}
+
+.absolute .login-form .title {
+  margin: 20px;
+  text-decoration: none;
+  color: white;
+  font-family: serif;
+}
+
 .login-signup {
   margin: 10px;
 }
+
 .enter {
   opacity: 0.5;
   color: white;
@@ -56,8 +58,8 @@ img {
   margin: 20px;
   padding: 3px;
   box-sizing: border-box;
-
 }
+
 .btn1 {
   border: none;
   background-color: #FFFF6C;

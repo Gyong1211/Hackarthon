@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate
 
 class LoginForm(forms.Form):
 
-    usernmae = forms.CharField(
+    username = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 'placeholder':'Enter your ID'
@@ -24,10 +24,11 @@ class LoginForm(forms.Form):
         password = self.cleaned_data.get('password')
 
         user = authenticate(username=username, password=password)
+
         if user is not None:
             self.cleaned_data['user'] = user
         else:
             raise forms.ValidationError(
-                'Login credential is not valid'
+                'Login credential is not validaa'
             )
         return self.cleaned_data
