@@ -22,9 +22,9 @@ RUN         echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 RUN         echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
 
 
-RUN         pyenv virtualenv 3.6.1 hackerthon
+RUN         pyenv virtualenv 3.6.1 hackarthon
 
-RUN         /root/.pyenv/versions/hackerthon/bin/pip install uwsgi
+RUN         /root/.pyenv/versions/hackarthon/bin/pip install uwsgi
 
 RUN         apt-get -y install nginx
 
