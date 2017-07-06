@@ -15,7 +15,4 @@ class MyUser(AbstractUser):
     def __str__(self):
         return self.nickname or self.username
 
-    if __name__ == '__main__':
-        img_profile = models.ImageField(upload_to='user', blank=True)
-
 
