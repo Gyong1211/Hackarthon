@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -6,6 +7,8 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 
 from .models import Attendance
+
+User = get_user_model()
 
 
 @login_required
@@ -80,3 +83,24 @@ def already_attend(request):
         "result": "이미 출석체크 하셨습니다."
     }
     return render(request, 'attendance/result.html', context=context)
+
+
+def attendance_list(request):
+    user_list = User.objects.all()
+    attendance_result = []
+    for user in user_list:
+        cur_year = timezone.now().year
+        cur_month = timezone.now().month
+        cur_day = timezone.now().day
+        attendance_result.append([
+            user.username,
+            user.attendance_set.filter(
+                attendance_time__year=cur_year,
+                attendance_time__month=cur_month,
+                attendance_time__day=cur_day
+            ).exists])
+    context = {
+        "current_day":"{}년 {}월 {}일 출석표".format(cur_year, cur_month, cur_day),
+        "attendance_result": attendance_result
+    }
+    return render(request, 'attendance/list.html', context=context)

@@ -2,6 +2,8 @@
 
 .login-content { margin: auto; width: 200px; margin-top: -120px; margin-left: -100px; position: fixed; top: 50%; left: 50%; }
 
+.attendance_list { margin-top: 30px; text-align: center; }
+
 .btn-container { vertical-align: middle; }
 
 .signup-form { margin: auto; width: 200px; margin-top: -180px; margin-left: -100px; position: fixed; top: 50%; left: 50%; }
@@ -29,3 +31,9 @@ h3 { font-size: 30px; margin: 0; padding-top: 20px; padding-bottom: 10px; }
 .error { font-size: 30px; }
 
 .result { font-size: 30px; line-height: 40px; }
+
+table { margin-top: 20px; }
+
+table, th, td { font-size: 18px; border: 2px solid white; border-collapse: collapse; }
+
+th, td { padding: 10px 20px; text-align: center; }
