@@ -34,7 +34,7 @@ print(config_secret_common)
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config_secret_common['django']['secret_key']
+SECRET_KEY = config_secret_common['django']['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True

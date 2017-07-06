@@ -1,4 +1,5 @@
-from config.settings.base import *
+
+from .base import *
 
 config_secret_debug = json.loads(open(CONFIG_SECRET_DEBUG_FILE).read())
 
@@ -26,3 +27,4 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
