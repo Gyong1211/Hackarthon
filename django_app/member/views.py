@@ -8,6 +8,8 @@ from member.forms import LoginForm, SignupForm
 
 
 def main(request):
+    if request.user.is_authenticated():
+        return redirect('attendance:attendance_create')
     return render(request, 'member/main.html')
 
 
@@ -24,20 +26,18 @@ def login(request):
         if form.is_valid():
             user = form.cleaned_data['user']
             django_login(request, user)
-            return redirect('member:main')
+            return redirect('attendance:attendance_create')
 
-        else:
-            return HttpResponse('Login credential is invalid')
     else:
         print('get: {}'.format(request))
         if request.user.is_authenticated:
-            return redirect('member:main')
-        form = LoginForm()
-        context = {
-            'form': form,
+            return redirect('attendance:attendance_create')
+    form = LoginForm()
+    context = {
+        'form': form,
 
-        }
-        return render(request, 'member/login.html', context)
+    }
+    return render(request, 'member/login.html', context)
 
 
 def logout(request):

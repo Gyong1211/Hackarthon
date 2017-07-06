@@ -1,42 +1,35 @@
+{% extends 'common/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <title>Title</title>
-</head>
-<body>
-    {% if user.is_authenticated %}
-    <div class="header">
-        <span class="header_sub">{{ user }} is online</span>
-        <a class="header_sub btn1" href="{% url 'member:logout' %}" type="button">LOG OUT</a>
-    </div>
-    {% else %}
-    <div class="absolute">
-        <div class="login-form">
-            <!--반장님 링크 넣으세요-->
-            <a href=""><h4 class="title">출석 체크</h4></a>
-            <form class="header_sub" action="{% url 'member:login' %}" method="POST">
-                {% csrf_token %}
-                <div class="enter">{{ login_form.username }}</div>
-                <div class="enter">{{ login_form.password }}</div>
-                <div class="login-signup">
-                    <button type="submit" class="btn1">LOGIN</button>
-                    <a class="btn2" href="{% url 'member:signup' %}">SIGN UP</a>
-                </div>
-            </form>
+
+{% block content %}
+<div class="login-content">
+    <h3 class="title">ChulCheck!</h3>
+    <form action="{% url 'member:login' %}" method="POST">
+        {% csrf_token %}
+        <div class="login-form-main">
+            <div class="input-username">{{login_form.username}}</div>
+            <div class="input-password">{{login_form.password}}</div>
         </div>
-    </div>
+        <div class="btn-container">
+          <button type="submit" class="btn btn-main">LOGIN</button>
+          <a class="btn btn-main" href="{% url 'member:signup' %}">SIGN UP</a>
+        </div>
+    </form>
+</div>
 
-
-
-
-    {% endif %}
-
-
-
-    <img src="{% static 'images/background.jpg' %}" alt="">
-</body>
-</html>
+<!--<div class="content">-->
+    <!--<div class="login-form">-->
+        <!--&lt;!&ndash;반장님 링크 넣으세요&ndash;&gt;-->
+        <!--<a href=""><h4 class="title">ChulCheck!</h4></a>-->
+        <!--<form class="header_sub" action="{% url 'member:login' %}" method="POST">-->
+            <!--{% csrf_token %}-->
+            <!--<div class="enter">{{ login_form.username }}</div>-->
+            <!--<div class="enter">{{ login_form.password }}</div>-->
+            <!--<div class="login-signup">-->
+                <!--<button type="submit" class="btn1">LOGIN</button>-->
+                <!--<a class="btn2" href="{% url 'member:signup' %}">SIGN UP</a>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+<!--</div>-->
+{% endblock %}

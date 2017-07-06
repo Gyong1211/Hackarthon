@@ -1,81 +1,42 @@
-@import "variables";
+@import 'variables';
 
-html, body {
-  font-family: monospace;
+html, body{
   font-size: 14px;
   line-height: 18px;
-
-}
-a {
-  text-decoration:none;
-}
-img {
-  width: 100%;
-}
-
-.header {
-  float:right;
-  margin: 8px;
-  .header_sub {
-    text-decoration: none;
-    margin: 0 auto;
-  }
-}
-.absolute {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform:translate(-50%,-50%);
-
-  .login-form{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:translate(-50%,-50%);
-    color: white;
-    font-size: 50px;
-
-    .title {
-      margin: 20px;
-      text-decoration: none;
-      color: white;
-      font-family: serif;
-    }
-
-  }
-}
-.login-signup {
-  margin: 10px;
-}
-.enter {
-  opacity: 0.5;
+  background-color: $color-theme;
   color: white;
-  background: none;
-  font-size: 20px;
-  margin: 20px;
-  padding: 3px;
-  box-sizing: border-box;
-
-}
-.btn1 {
-  border: none;
-  background-color: #FFFF6C;
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 20px;
-  padding: 10px 18px;
-  font-family: monospace;
 }
 
-.btn2 {
-  border: none;
-  background-color: #CCA63D;
-  color: black;
+input[type=text],input[type=password] {
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  color: #262626;
+  font-size: 12px;
+  outline: none;
+  padding: 3px 10px 3px 26px;
+  background-color: #fafafa;
+}
+
+a {
+  color: $color-text-common;
   text-decoration: none;
-  cursor: pointer;
-  font-size: 20px;
-  padding: 10px 18px;
-  font-family: monospace;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+ul,ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.clearfix {
+  &::after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+  }
 }

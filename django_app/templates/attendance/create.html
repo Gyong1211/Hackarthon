@@ -1,55 +1,57 @@
 {% extends 'common/base.html' %}
 
 {% block content %}
-  <button id="getLocation" type="button">현재 위치 갱신</button>
-  <div id="map" style="width:500px; height: 500px;display: block;"></div>
+<div class="map-content">
+  <button id="getLocation" type="button" class="btn btn-lg btn-block">현재 위치 갱신</button>
   <form id = "" action="" method="POST" >
-            {% csrf_token %}
-        <input type="hidden" id = "location_lat" name="location_lat" value="">
-        <input type="hidden" id = "location_lng" name="location_lng" value="">
-        <button type="submit">전송</button>
-</form>
+    {% csrf_token %}
+    <input type="hidden" id = "location_lat" name="location_lat" value="">
+    <input type="hidden" id = "location_lng" name="location_lng" value="">
+    <button type="submit" class="btn btn-lg btn-block">Chulcheck!</button>
+  </form>
+  <div id="map" style="width:500px; height: 500px;display: block;"></div>
   <script>
   (function (){
     let map, infoWindow; window.initMap = function () {
       map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 37.517565, lng: 127.018110},
         zoom: 18
-       });
-       infoWindow = new google.maps.InfoWindow({map: map});
-       infoWindow.setContent('학원 위치');
-       infoWindow.setPosition({lat: 37.517565, lng: 127.018110});
+      });
+      infoWindow = new google.maps.InfoWindow({map: map});
+      infoWindow.setContent('학원 위치');
+      infoWindow.setPosition({lat: 37.517565, lng: 127.018110});
+    };
+    function successCallback(position) {
+      let pos = {
+        lat: position.coords.latitude, lng: position.coords.longitude
       };
-      function successCallback(position) {
-        let pos = {
-          lat: position.coords.latitude, lng: position.coords.longitude
-         };
-          userinfoWindow = new google.maps.InfoWindow({map: map});
-          userinfoWindow.setContent('현재 위치');
-          userinfoWindow.setPosition(pos);
-          map.setCenter(pos);
-          alert("위치 확인 성공!");
-          document.getElementById('location_lat').value = pos.lat;
-          document.getElementById('location_lng').value = pos.lng;
-        } function errorCallback(error) { alert("Error: " + error.message);
-      }
-      document.getElementById("getLocation").onclick = function () {
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-      };
-    }());
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{google_map_api_secret}}&callback=initMap"
-            async="" defer=""></script>
-    {% if no_position %}
-    <div class="error">
-        <p>위치 확인을 안하셨는데요?</p>
-    </div>
-    {%endif%}
-    {% if distance %}
-    <div class="result">
-        <p>ChulCheck Failed T^T</p>
-        <p>학원과 거리가 멀어요 ㅠㅠ</p>
-        <p>거리 : {{distance}}m</p>
-    </div>
-    {% endif %}
+      userinfoWindow = new google.maps.InfoWindow({map: map});
+      userinfoWindow.setContent('현재 위치');
+      userinfoWindow.setPosition(pos);
+      map.setCenter(pos);
+      alert("위치 확인 성공!");
+      document.getElementById('location_lat').value = pos.lat;
+      document.getElementById('location_lng').value = pos.lng;
+    } function errorCallback(error) { alert("Error: " + error.message);
+  }
+  document.getElementById("getLocation").onclick = function () {
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  };
+}());
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{google_map_api_secret}}&callback=initMap"
+async="" defer=""></script>
+{% if no_position %}
+<div class="error">
+  <p>위치 확인을 안하셨는데요?</p>
+</div>
+{%endif%}
+{% if distance %}
+<div class="result">
+  <p>ChulCheck Failed T^T</p>
+  <p>학원과 거리가 멀어요 ㅠㅠ</p>
+  <p>거리 : {{distance}}m</p>
+</div>
+</div>
+{% endif %}
 {% endblock %}
