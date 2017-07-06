@@ -11,6 +11,10 @@
         <span>{{ user }} is online</span>
         <a href="{% url 'member:logout' %}" type="button">LOG OUT</a>
         {% else %}
+        <form action="{% url 'member:login' %}" method="POST" class="form_inline">
+            {% csrf_token %}
+            {{ login_form }}
+        </form>
         <a href="{% url 'member:login' %}" type="button">LOGIN</a>
         {% endif %}
         <a href="{% url 'member:signup' %}" type="button">SIGN UP</a>
