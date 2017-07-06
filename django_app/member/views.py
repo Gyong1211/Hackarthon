@@ -1,4 +1,4 @@
-from django.contrib.auth import login as django_login,\
+from django.contrib.auth import login as django_login, \
     logout as django_logout
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -10,9 +10,17 @@ from member.forms import LoginForm, SignupForm
 def main(request):
     return render(request, 'member/main.html')
 
+
 def login(request):
+
+    print(request)
+
     if request.method == 'POST':
+        print('post: {}'.format(request))
         form = LoginForm(data=request.POST)
+        print(form)
+        print(form)
+
         if form.is_valid():
             user = form.cleaned_data['user']
             django_login(request, user)
@@ -21,18 +29,21 @@ def login(request):
         else:
             return HttpResponse('Login credential is invalid')
     else:
+        print('get: {}'.format(request))
         if request.user.is_authenticated:
             return redirect('member:main')
         form = LoginForm()
         context = {
-            'form':form,
+            'form': form,
 
         }
         return render(request, 'member/login.html', context)
 
+
 def logout(request):
     django_logout(request)
     return redirect('member:main')
+
 
 def signup(request):
     if request.method == 'POST':
@@ -44,6 +55,6 @@ def signup(request):
     else:
         form = SignupForm()
     context = {
-        'form':form,
+        'form': form,
     }
     return render(request, 'member/signup.html', context)
