@@ -1,12 +1,26 @@
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-# Create your views here.
+from django.utils import timezone
+
 from .models import Attendance
 
 
+@login_required
 def attendance_create(request):
+    def is_attend(request):
+        cur_year = timezone.now().year
+        cur_month = timezone.now().month
+        cur_day = timezone.now().day
+        return Attendance.objects.filter(
+            user=request.user,
+            attendance_time__year=cur_year,
+            attendance_time__month=cur_month,
+            attendance_time__day=cur_day
+        ).exists()
+
     def calc_distance(current_lat, current_lng):
         from math import sin, cos, sqrt, atan2, radians
         R = 6373.0
@@ -24,17 +38,45 @@ def attendance_create(request):
         return distance
 
     if request.method == 'POST':
+        if not (request.POST['location_lat'] or request.POST['location_lng']):
+            context = {
+                "google_map_api_secret": settings.GOOGLE_MAP_API_SECRET,
+                "no_position": True
+            }
+            return render(request, 'attendance/create.html', context=context)
+
         current_lat = float(request.POST['location_lat'])
         current_lng = float(request.POST['location_lng'])
-        print(calc_distance(current_lat, current_lng))
-        if calc_distance(current_lat, current_lng) <= 0.4:
+        distance = calc_distance(current_lat, current_lng)
+
+        if distance <= 0.2:
             Attendance.objects.create(user=request.user)
-            return HttpResponse('출첵 성공')
+            return redirect('attendance:attendance_success')
         else:
-            return HttpResponse('거리가 멀어요')
+            context = {
+                "google_map_api_secret": settings.GOOGLE_MAP_API_SECRET,
+                "distance": distance * 1000
+            }
+            return render(request, 'attendance/create.html', context=context)
     else:
+        if is_attend(request):
+            return redirect('attendance:already_attend')
         print(settings.GOOGLE_MAP_API_SECRET)
         context = {
             "google_map_api_secret": settings.GOOGLE_MAP_API_SECRET
         }
-        return render(request, 'attendance/attendance.html', context=context)
+        return render(request, 'attendance/create.html', context=context)
+
+
+def attendance_success(request):
+    context = {
+        "result": "출석체크 완료! 열공하세요!"
+    }
+    return render(request, 'attendance/result.html', context=context)
+
+
+def already_attend(request):
+    context = {
+        "result": "이미 출석체크 하셨습니다."
+    }
+    return render(request, 'attendance/result.html', context=context)

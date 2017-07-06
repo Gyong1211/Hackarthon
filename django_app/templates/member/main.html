@@ -1,0 +1,35 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="login-content">
+    <h3 class="title">ChulCheck!</h3>
+    <form action="{% url 'member:login' %}" method="POST">
+        {% csrf_token %}
+        <div class="login-form-main">
+            <div class="input-username">{{login_form.username}}</div>
+            <div class="input-password">{{login_form.password}}</div>
+        </div>
+        <div class="btn-container">
+          <button type="submit" class="btn btn-main">LOGIN</button>
+          <a class="btn btn-main" href="{% url 'member:signup' %}">SIGN UP</a>
+        </div>
+    </form>
+</div>
+
+<!--<div class="content">-->
+    <!--<div class="login-form">-->
+        <!--&lt;!&ndash;반장님 링크 넣으세요&ndash;&gt;-->
+        <!--<a href=""><h4 class="title">ChulCheck!</h4></a>-->
+        <!--<form class="header_sub" action="{% url 'member:login' %}" method="POST">-->
+            <!--{% csrf_token %}-->
+            <!--<div class="enter">{{ login_form.username }}</div>-->
+            <!--<div class="enter">{{ login_form.password }}</div>-->
+            <!--<div class="login-signup">-->
+                <!--<button type="submit" class="btn1">LOGIN</button>-->
+                <!--<a class="btn2" href="{% url 'member:signup' %}">SIGN UP</a>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+<!--</div>-->
+{% endblock %}

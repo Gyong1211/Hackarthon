@@ -14,6 +14,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 
 
+print(TEMPLATES_DIR)
+
 DEBUG = True
 ALLOWED_HOSTS = config_secret_debug['django']['allowed_hosts']
 
