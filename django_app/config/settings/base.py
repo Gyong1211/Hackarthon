@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
 
     'member',
+    'attendance',
 ]
 
 MIDDLEWARE = [
