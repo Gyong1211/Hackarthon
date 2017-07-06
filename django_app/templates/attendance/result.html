@@ -3,6 +3,7 @@
 {% block content %}
     <div class="result">
         <p>{{result}}</p>
+        <a href="{% url 'member:logout' %}" class="btn btn-lg btn-red">로그아웃</a>
+        <a href="{% url 'attendance:attendance_list' %}" class="btn btn-lg">출석표 확인</a>
     </div>
-    <a href="{% url 'member:logout' %}"></a>
 {% endblock %}

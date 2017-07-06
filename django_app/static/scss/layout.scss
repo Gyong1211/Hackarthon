@@ -14,6 +14,11 @@
   left:50%;
 }
 
+.attendance_list {
+  margin-top: 30px;
+  text-align: center;
+}
+
 .btn-container {
   vertical-align: middle;
 }
@@ -84,4 +89,18 @@ h3 {
 .result {
   font-size: 30px;
   line-height: 40px;
+}
+
+table {
+  margin-top: 20px;
+}
+table, th, td{
+  font-size: 18px;
+  border: 2px solid white;
+  border-collapse: collapse;
+}
+th, td {
+padding: 10px 20px;
+text-align: center;
+
 }
