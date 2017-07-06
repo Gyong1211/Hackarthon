@@ -1,13 +1,8 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # Create your models here.
 
-<<<<<<< HEAD
-
-
-
-'ttttttessssssttttttttt'
-=======
-class User(models.formModel):
-    pass
->>>>>>> a0856e7940d2ea110dd62a264472386cede3ea21
+class MyUser(AbstractUser):
+    if __name__ == '__main__':
+        img_profile = models.ImageField(upload_to='user', blank=True)
