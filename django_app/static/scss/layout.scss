@@ -17,12 +17,37 @@
 .btn-container {
   vertical-align: middle;
 }
+.signup-form {
+  margin: auto;
+  width: 200px;
+  margin-top: -180px;
+  margin-left: -100px;
+  position: fixed;
+  top: 50%;
+  left:50%;
+  input {
+    width: 180px;
+  }
+}
 
-.signup-form,.login-form,.result {
+.login-form, {
   margin: auto;
   width: 200px;
   margin-top: -140px;
   margin-left: -100px;
+  position: fixed;
+  top: 50%;
+  left:50%;
+  input {
+    width: 150px;
+  }
+}
+
+.result {
+  margin: auto;
+  width: 400px;
+  margin-top: -140px;
+  margin-left: -200px;
   position: fixed;
   top: 50%;
   left:50%;
@@ -51,4 +76,12 @@ h3 {
 
 .fieldset {
   margin: 10px 0;
+}
+
+.error {
+  font-size: 30px;
+}
+.result {
+  font-size: 30px;
+  line-height: 40px;
 }

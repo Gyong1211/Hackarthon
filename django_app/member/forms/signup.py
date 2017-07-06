@@ -20,6 +20,14 @@ class SignupForm(forms.Form):
             }
         )
     )
+    mobile = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Phonenumber ex)01012345678',
+                'required': 'true'
+            }
+        )
+    )
 
     password1 = forms.CharField(
         widget=forms.PasswordInput(
