@@ -1,0 +1,8 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+    <div class="result">
+        <p>{{result}}</p>
+    </div>
+    <a href="{% url 'member:logout' %}"></a>
+{% endblock %}

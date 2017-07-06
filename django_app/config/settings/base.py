@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ROOT_DIR = os.path.dirname(BASE_DIR)
-TEMPLATES_DIR = os.path.join(ROOT_DIR, 'templates')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # .config_secret폴더 및 하위 파일 경로
 CONFIG_SECRET_DIR = os.path.join(ROOT_DIR, '.config_secret')
@@ -50,6 +50,7 @@ GOOGLE_MAP_API_SECRET = config_secret_common['googlemap']['api_key']
 
 
 AUTH_USER_MODEL= 'member.MyUser'
+LOGIN_URL = 'member:login'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -122,7 +123,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
