@@ -35,6 +35,7 @@ print(config_secret_common)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config_secret_common['django']['secret_key']
+GOOGLE_MAP_API_SECRET = config_secret_common['googlemap']['api_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
