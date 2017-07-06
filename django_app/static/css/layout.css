@@ -18,7 +18,21 @@
   vertical-align: middle;
 }
 
-.signup-form, .login-form, .result {
+.signup-form {
+  margin: auto;
+  width: 200px;
+  margin-top: -180px;
+  margin-left: -100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+.signup-form input {
+  width: 180px;
+}
+
+.login-form {
   margin: auto;
   width: 200px;
   margin-top: -140px;
@@ -28,7 +42,21 @@
   left: 50%;
 }
 
-.signup-form input, .login-form input, .result input {
+.login-form input {
+  width: 150px;
+}
+
+.result {
+  margin: auto;
+  width: 400px;
+  margin-top: -140px;
+  margin-left: -200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+.result input {
   width: 150px;
 }
 
@@ -53,4 +81,13 @@ h3 {
 
 .fieldset {
   margin: 10px 0;
+}
+
+.error {
+  font-size: 30px;
+}
+
+.result {
+  font-size: 30px;
+  line-height: 40px;
 }
