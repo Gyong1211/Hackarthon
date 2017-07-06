@@ -5,5 +5,5 @@ from . import views
 app_name = 'attendance'
 
 urlpatterns = [
-    url(r'^check/$', views.attendance_check, name='attendance_check'),
+    url(r'^create/$', views.attendance_create, name='attendance_check'),
 ]
